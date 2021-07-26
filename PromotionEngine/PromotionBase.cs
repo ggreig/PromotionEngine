@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace PromotionEngine
 {
-    public abstract class PromotionBase
+    public abstract class PromotionBase : IPromotion
     {
         protected PromotionBase(Dictionary<StockKeepingUnit, uint> inPattern)
         {
             Pattern = inPattern;
         }
 
-        protected Dictionary<StockKeepingUnit, uint> Pattern { get; }
+        public Dictionary<StockKeepingUnit, uint> Pattern { get; }
 
         public abstract uint GetPrice();
     }
