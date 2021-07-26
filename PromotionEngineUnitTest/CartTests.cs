@@ -104,6 +104,25 @@ namespace PromotionEngine.Tests
         }
 
         [Test]
+        public void ScenarioA_WithAllPromotions()
+        {
+            // Arrange
+            var theCart = new Cart();
+            theCart.Add(A).Add(B).Add(C);
+
+            // Act
+            uint theResult = theCart.GetPrice(new List<IPromotion>
+            {
+                Promotion1,
+                Promotion2,
+                Promotion3
+            });
+
+            // Assert
+            Assert.That(theResult, Is.EqualTo(100));
+        }
+
+        [Test]
         public void ScenarioB_WithPromotion1()
         {
             // Arrange
@@ -149,6 +168,28 @@ namespace PromotionEngine.Tests
 
             // Assert
             Assert.That(theResult, Is.EqualTo(420));
+        }
+
+
+        [Test]
+        public void ScenarioB_WithAllPromotions()
+        {
+            // Arrange
+            var theCart = new Cart();
+            theCart.Add(A).Add(A).Add(A).Add(A).Add(A)
+                   .Add(B).Add(B).Add(B).Add(B).Add(B)
+                   .Add(C);
+
+            // Act
+            uint theResult = theCart.GetPrice(new List<IPromotion>
+            {
+                Promotion1,
+                Promotion2,
+                Promotion3
+            });
+
+            // Assert
+            Assert.That(theResult, Is.EqualTo(370));
         }
 
         [Test]
@@ -200,6 +241,28 @@ namespace PromotionEngine.Tests
 
             // Assert
             Assert.That(theResult, Is.EqualTo(330));
+        }
+
+        [Test]
+        public void ScenarioC_WithAllPromotions()
+        {
+            // Arrange
+            var theCart = new Cart();
+            theCart.Add(A).Add(A).Add(A)
+                   .Add(B).Add(B).Add(B).Add(B).Add(B)
+                   .Add(C)
+                   .Add(D);
+
+            // Act
+            uint theResult = theCart.GetPrice(new List<IPromotion>
+            {
+                Promotion1,
+                Promotion2,
+                Promotion3
+            });
+
+            // Assert
+            Assert.That(theResult, Is.EqualTo(280));
         }
     }
 }
