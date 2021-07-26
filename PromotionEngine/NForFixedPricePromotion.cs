@@ -19,6 +19,7 @@ namespace PromotionEngine
             myFixedPrice = inFixedPrice;
         }
 
+
         public override uint GetPrice()
         {
             return myFixedPrice;
