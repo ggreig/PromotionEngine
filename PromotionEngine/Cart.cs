@@ -9,8 +9,6 @@ namespace PromotionEngine
 {
     public class Cart
     {
-        private uint myPromotionMatchCount;
-
         public Dictionary<StockKeepingUnit, uint> Contents { get; private set; }
             = new Dictionary<StockKeepingUnit, uint>();
 
@@ -37,11 +35,15 @@ namespace PromotionEngine
             return this;
         }
 
-        public uint GetPrice(IPromotion inPromotion)
+        public uint GetPrice(List<IPromotion> inPromotion)
         {
-            ApplyPromotion(inPromotion);
+            uint thePriceTotal = 0;
 
-            uint thePriceTotal = myPromotionMatchCount * inPromotion.GetPrice();
+            foreach (var aPromotion in inPromotion)
+            {
+                uint myPromotionMatchCount = ApplyPromotion(aPromotion);
+                thePriceTotal += myPromotionMatchCount * aPromotion.GetPrice();
+            }
 
             foreach (var (theStockKeepingUnit, theCount) in StandardPriceContents)
             {
@@ -51,14 +53,14 @@ namespace PromotionEngine
             return thePriceTotal ;
         }
 
-        private void ApplyPromotion(IPromotion inPromotion)
+        private uint ApplyPromotion(IPromotion inPromotion)
         {
             StandardPriceContents = Contents;
 
-            myPromotionMatchCount = ApplyPatternMatches(inPromotion);
+            return FindPatternMatches(inPromotion);
         }
 
-        private uint ApplyPatternMatches(IPromotion inPromotion)
+        private uint FindPatternMatches(IPromotion inPromotion)
         {
             bool isPatternMatch = true;
             uint theMatchCount = 0;

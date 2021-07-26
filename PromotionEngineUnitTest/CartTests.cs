@@ -69,7 +69,7 @@ namespace PromotionEngine.Tests
             theCart.Add(A).Add(B).Add(C);
 
             // Act
-            uint theResult = theCart.GetPrice(Promotion1);
+            uint theResult = theCart.GetPrice(new List<IPromotion> {Promotion1});
 
             // Assert
             Assert.That(theResult, Is.EqualTo(100));
@@ -83,7 +83,7 @@ namespace PromotionEngine.Tests
             theCart.Add(A).Add(B).Add(C);
 
             // Act
-            uint theResult = theCart.GetPrice(Promotion2);
+            uint theResult = theCart.GetPrice(new List<IPromotion> {Promotion2});
 
             // Assert
             Assert.That(theResult, Is.EqualTo(100));
@@ -97,7 +97,7 @@ namespace PromotionEngine.Tests
             theCart.Add(A).Add(B).Add(C);
 
             // Act
-            uint theResult = theCart.GetPrice(Promotion3);
+            uint theResult = theCart.GetPrice(new List<IPromotion>{Promotion3});
 
             // Assert
             Assert.That(theResult, Is.EqualTo(100));
@@ -113,7 +113,7 @@ namespace PromotionEngine.Tests
                    .Add(C);
 
             // Act
-            uint theResult = theCart.GetPrice(Promotion1);
+            uint theResult = theCart.GetPrice(new List<IPromotion>{Promotion1});
 
             // Assert
             Assert.That(theResult, Is.EqualTo(400));
@@ -129,7 +129,7 @@ namespace PromotionEngine.Tests
                    .Add(C);
 
             // Act
-            uint theResult = theCart.GetPrice(Promotion2);
+            uint theResult = theCart.GetPrice(new List<IPromotion>{Promotion2});
 
             // Assert
             Assert.That(theResult, Is.EqualTo(390));
@@ -145,7 +145,7 @@ namespace PromotionEngine.Tests
                    .Add(C);
 
             // Act
-            uint theResult = theCart.GetPrice(Promotion3);
+            uint theResult = theCart.GetPrice(new List<IPromotion>{Promotion3});
 
             // Assert
             Assert.That(theResult, Is.EqualTo(420));
@@ -162,7 +162,7 @@ namespace PromotionEngine.Tests
                    .Add(D);
 
             // Act
-            uint theResult = theCart.GetPrice(Promotion1);
+            uint theResult = theCart.GetPrice(new List<IPromotion>{Promotion1});
 
             // Assert
             Assert.That(theResult, Is.EqualTo(315));
@@ -179,7 +179,7 @@ namespace PromotionEngine.Tests
                    .Add(D);
 
             // Act
-            uint theResult = theCart.GetPrice(Promotion2);
+            uint theResult = theCart.GetPrice(new List<IPromotion>{Promotion2});
 
             // Assert
             Assert.That(theResult, Is.EqualTo(305));
@@ -196,7 +196,7 @@ namespace PromotionEngine.Tests
                    .Add(D);
 
             // Act
-            uint theResult = theCart.GetPrice(Promotion3);
+            uint theResult = theCart.GetPrice(new List<IPromotion>{Promotion3});
 
             // Assert
             Assert.That(theResult, Is.EqualTo(330));
