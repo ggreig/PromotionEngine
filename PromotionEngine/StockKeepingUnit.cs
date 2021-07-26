@@ -8,11 +8,17 @@ namespace PromotionEngine
 {
     public class StockKeepingUnit
     {
-        public StockKeepingUnit(char inID)
+        public StockKeepingUnit(char inId, uint inUnitPrice)
         {
-            Id = inID;
+            Id = inId;
+            UnitPrice = inUnitPrice;
         }
 
         public char Id { get; private set; }
+
+        /// <remarks>
+        /// Assumed uint for UnitPrice based on examples; more likely to be decimal.
+        /// </remarks>
+        public uint UnitPrice { get; private set; }
     }
 }

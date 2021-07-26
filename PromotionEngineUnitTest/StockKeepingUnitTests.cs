@@ -6,17 +6,21 @@ namespace PromotionEngine.Tests
     public class StockKeepingUnitTests
     {
         [Test]
-        public void StockKeepingUnit_HasExpectedId()
+        public void StockKeepingUnit_HasExpectedValues()
         {
-            // Arrange / Act
-            char theExpectedValue = 'a';
-            var theSku = new StockKeepingUnit(theExpectedValue);
+            // Act
+            char theExpectedId = 'a';
+            uint theExpectedUnitPrice = 20;
+            var theSku = new StockKeepingUnit(theExpectedId, theExpectedUnitPrice);
 
             // Act
-            char theResult = theSku.Id;
+            char theActualId = theSku.Id;
+            uint theActualUnitPrice = theSku.UnitPrice;
 
             // Assert
-            Assert.That(theResult, Is.EqualTo(theExpectedValue));
+            // Not best practice to have two asserts, but still trivial so let's keep it simple.
+            Assert.That(theActualId, Is.EqualTo(theExpectedId));
+            Assert.That(theActualUnitPrice, Is.EqualTo(theExpectedUnitPrice));
         }
     }
 }
