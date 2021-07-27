@@ -41,8 +41,8 @@ namespace PromotionEngine
 
             foreach (var aPromotion in inPromotion)
             {
-                uint myPromotionMatchCount = ApplyPromotion(aPromotion);
-                thePriceTotal += myPromotionMatchCount * aPromotion.GetPrice();
+                uint thePromotionMatchCount = ApplyPromotion(aPromotion);
+                thePriceTotal += thePromotionMatchCount * aPromotion.GetPrice();
             }
 
             foreach (var (theStockKeepingUnit, theCount) in StandardPriceContents)
